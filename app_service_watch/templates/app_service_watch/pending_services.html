@@ -1,0 +1,18 @@
+{% extends "app_service_watch/base.html" %}
+{% load static %}
+{% block contenidoVariable%}
+    <h1 class="mb-4">
+        Servicios en curso
+    </h1>
+    <ul>
+        {% for serv in servicios_pendientes%}
+        <li>
+            Id: {{serv.id}}, servicio: {{serv.name}}, fecha de actualización: {{serv.status_update_date}}, Estado: {{serv.status}}.
+        </li>
+        {% endfor %}
+        <li>
+            <a class="nav-link" href="{% url 'PendServForm' %}">Agregar Servicios en Curso</a>
+        </li>
+    </ul>
+        
+{% endblock contenidoVariable%}

@@ -1,0 +1,18 @@
+{% extends "app_service_watch/base.html" %}
+{% load static %}
+{% block contenidoVariable%}
+<h1 class="mb-4">
+        Servicios prestados
+    </h1>
+    <ul>
+        {% for serv in servicios_prestados%}
+        <li>
+            Id: {{serv.id}}, servicio: {{serv.name}}, fecha de actualización: {{serv.completion_date}}, Completado: {{serv.completed}}.
+        </li>
+        {% endfor %}
+        <li>
+            <a class="nav-link" href="{% url 'ServProvForm' %}">Agregar Servicios Prestados</a>
+        </li>
+    </ul>
+    
+{% endblock contenidoVariable%}

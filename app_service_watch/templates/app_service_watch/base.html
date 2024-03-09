@@ -1,0 +1,143 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>{% block title%}Soluciones Empresariales - Service Tracker{% endblock title%}</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+    </head>
+    <link href="{% static 'app_service_watch/css/styles.css ' %}" rel="stylesheet" />
+    <body class="d-flex flex-column h-100">
+        <main class="flex-shrink-0">
+            <!-- Navigation-->
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <div class="container px-5">
+                    <a class="navbar-brand" href="{% url 'Search Bar' %}">Buscar</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">       
+                            <li class="nav-item"><a class="nav-link" href="{% url 'Inicio' %}">Inicio</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{% url 'About' %}">Acerca de</a></li>
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"  data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                   Clientes
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                   <a class="dropdown-item" href="{% url 'Lista de Clientes' %}">Clientes</a>
+                                   <a class="dropdown-item" href="{% url 'Crear Cliente' %}">Agregar Cliente</a>
+                                   <a class="dropdown-item" href="{% url 'Clientes' %}">Clientes funcion</a>
+                                   <a class="dropdown-item" href="{% url 'ClientsForm' %}">Formulario Clientes funcion</a>
+                                </div>
+                            </div>
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"  data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                   Staff
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                   <a class="dropdown-item" href="{% url 'Lista de Staff' %}">Staff</a>
+                                   <a class="dropdown-item" href="{% url 'Crear Staff' %}">Agregar Cliente</a>
+                                   <a class="dropdown-item" href="{% url 'Staff' %}">Staff funcion</a></li>
+                                   <a class="dropdown-item" href="{% url 'StaffForm' %}">Formulario Staff funcion</a>
+                                </div>
+                            </div>
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"  data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                   Servicios en Curso
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                   <a class="dropdown-item" href="{% url 'Lista de Servicios en Curso' %}">Servicios en Curso</a>
+                                   <a class="dropdown-item" href="{% url 'Crear Servicios en Curso' %}">Agregar Servicios en Curso</a>
+                                   <a class="dropdown-item" href="{% url 'Servicios Pendientes' %}">Servicios en Curso funcion</a></li>
+                                   <a class="dropdown-item" href="{% url 'PendServForm' %}">Formulario Servicios en Curso funcion</a>
+                                </div>
+                            </div>
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"  data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                   Servicios Prestados
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                   <a class="dropdown-item" href="{% url 'Lista de Servicios Prestados' %}">Servicios Prestados</a>
+                                   <a class="dropdown-item" href="{% url 'Crear Servicios Prestados' %}">Agregar Servicios Prestados</a>
+                                   <a class="dropdown-item" href="{% url 'Servicios Prestados' %}">Servicios Prestados funcion</a></li>
+                                   <a class="dropdown-item" href="{% url 'ServProvForm' %}">Formulario Servicios Prestados funcion</a>
+                                </div>
+                            </div>
+                            {% if request.user.is_authenticated %}
+                            <div class="dropdown">   
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <img src="{{ url }}" style="max-width: 100%; height: auto; max-height: 20px;"> {{ request.user.username }}
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                    <form action="{% url 'Logout' %}" method="post">
+                                        {% csrf_token %}
+                                        <button type="submit" class="btn btn-info">Cerrar sesión</button>
+                                    </form>
+                                    <li><a class="dropdown-item" href="{% url 'EditarUsuario' %}">Editar usuario</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'AgregarAvatar' %}">Agregar Avatar</a></li>
+                                </ul>
+                            </div>
+                            {% else %}
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Cuenta
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                    <li><a class="dropdown-item" href="{% url 'Login' %}">Inciar Sesión</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'Register' %}">Crear cuenta</a></li>
+                                </ul>
+                            </div>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <!-- Header-->
+            <header class="bg-primary py-5">
+                <div class="container px-5">
+                    <div class="row gx-5 align-items-center justify-content-center">
+                        <div class="col-lg-8 col-xl-7 col-xxl-6">
+                            <div class="my-5 text-center text-xl-start">
+                                <h1 class="display-5 fw-bolder text-white mb-2">Soluciones Empresariales  Service Tracker</h1>
+                                <p class="lead fw-normal text-white-50 mb-4">La opción más rápida a la hora de resolver problemas.</p>
+                                <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
+                                    <a class="btn btn-secondary btn-lg px-4 me-sm-3" href="{% url 'Register' %}">Crea tu Usuario</a>
+                                    <a class="btn btn-outline-light btn-lg px-4" href="{% url 'About' %}">Acerca de nosotros</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center"><img class="img-fluid rounded-3 my-5" src="media/index1.jpg" alt="..." /></div>
+                    </div>
+                </div>
+            </header>
+            {% block contenidoVariable%}
+            
+            {% endblock contenidoVariable%}
+        </main>
+        <!-- Footer-->
+        <footer class="bg-dark py-4 mt-auto">
+            <div class="container px-5">
+                <div class="row align-items-center justify-content-between flex-column flex-sm-row">
+                    <div class="col-auto"><div class="small m-0 text-white">Copyright &copy; Luciano Ivo Palermo 2024</div></div>
+                    <div class="col-auto">
+                        <a class="link-light small" href="#!">Privacy</a>
+                        <span class="text-white mx-1">&middot;</span>
+                        <a class="link-light small" href="#!">Terms</a>
+                        <span class="text-white mx-1">&middot;</span>
+                        <a class="link-light small" href="#!">Contact</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    </body>
+</html>

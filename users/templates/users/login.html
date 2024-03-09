@@ -1,0 +1,18 @@
+{% extends "app_service_watch/base.html" %}
+{% load static %}
+{% block title%} Login {% endblock title%}
+{% block contenidoVariable%}
+    <h1 class="d-flex justify-content-center"> 
+        Login
+    </h1>
+    <div class="d-flex justify-content-center">
+        <div class="d-flex flex-column">
+            <p class="f5- fw-bold"> {{msg_login}} </p>
+            <form action="" method="POST">
+                {% csrf_token %}
+                {{ form.as_p}}
+                <button type="submit" value="Iniciar Sesión">Iniciar Sesión</button>
+            </form>
+        </div>
+    </div>
+{% endblock contenidoVariable%}

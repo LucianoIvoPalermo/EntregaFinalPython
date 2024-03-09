@@ -1,0 +1,22 @@
+{% extends "app_service_watch/base.html" %}
+{% load static %}
+{% block contenidoVariable%}
+<h1 class="mb-4">
+    Lista de Clientes
+</h1>
+<ul>
+    {% for client in object_list %}
+    <li>
+        Id: {{client.id}}, Nombre: {{client.name}}, Apellido: {{client.last_name}}, Email: {{client.email}}, Empresa: {{client.company}}.
+    </li>
+    
+    <li>
+        <a href="{% url 'Detalle de Cliente' client.id %}">Detalle del Cliente</a>
+        <a href="{% url 'Crear Cliente' %}">Agregar Cliente</a>
+        <a href="{% url 'Actualizar Cliente' client.id %}">Actualizar Cliente</a>
+        <a href="{% url 'Borrar Cliente' client.id %}">Borrar Cliente</a>
+    </li>
+    {% endfor %}
+</ul>
+
+{% endblock contenidoVariable%}

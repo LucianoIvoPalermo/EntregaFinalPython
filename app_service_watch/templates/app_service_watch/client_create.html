@@ -1,0 +1,26 @@
+{% extends "app_service_watch/base.html" %}
+{% load static %}
+{% block contenidoVariable%}
+<h1 class="mb-4">
+    Crear Cliente
+</h1>
+<h2>Menu para creación de cliente </h2>
+<div class="container mt-5">
+    <ul> 
+        <form method="POST">
+            {% csrf_token %}
+            {% for field in form %}
+                <div class="form-group">
+                    <label for="{{ field.auto_id }}">{{ field.label }}</label>
+                    {{ field }}
+                </div>
+            {% endfor %}
+            <button type="submit" class="btn btn-primary">Crear</button>
+        </form>
+        
+        <li>
+            <a class="nav-link" href="{% url 'Lista de Clientes' %}">Lista de Cliente</a>
+        </li>
+    </ul>
+<div>
+{% endblock contenidoVariable%}

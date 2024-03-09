@@ -1,0 +1,22 @@
+{% extends "app_service_watch/base.html" %}
+{% load static %}
+{% block contenidoVariable%}
+<h1 class="mb-4">
+    Lista de Servicios Prestados
+</h1>
+<ul>
+    {% for sp in object_list %}
+    <li>
+        Id: {{sp.id}}, Descripción: {{sp.name}}, Fecha de finalización: {{sp.completion_date}}, Recibida por el cliente: {{sp.completed}}.
+    </li>
+    
+    <li>
+        <a href="{% url 'Detalle de Servicios Prestados' sp.id %}">Detalle del Servicio Prestado</a>
+        <a href="{% url 'Crear Servicios Prestados' %}">Agregar Servicio Prestado</a>
+        <a href="{% url 'Actualizar Servicios Prestados' sp.id %}">Actualizar Servicio Prestado</a>
+        <a href="{% url 'Borrar Servicios Prestados' sp.id %}">Borrar Servicio Prestado</a>
+    </li>
+    {% endfor %}
+</ul>
+
+{% endblock contenidoVariable%}

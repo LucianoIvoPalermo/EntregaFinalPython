@@ -1,0 +1,18 @@
+{% extends "app_service_watch/base.html" %}
+{% load static %}
+{% block contenidoVariable%}
+   <h1 class="mb-4">
+       Staff
+   </h1>
+   <ul>
+      {% for staff in get_staff %}
+      <li>
+         Id: {{staff.id}}, Nombre: {{staff.name}}, Apellido: {{staff.last_name}}, Email: {{staff.email}}.
+      </li>
+      {% endfor %}
+      <li>
+         <a class="nav-link" href="{% url 'StaffForm' %}">Agregar Staff</a>
+      </li>
+   </ul>
+      
+{% endblock contenidoVariable%}

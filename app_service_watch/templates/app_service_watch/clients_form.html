@@ -1,0 +1,17 @@
+{% extends "app_service_watch/base.html" %}
+{% load static %}
+{% block contenidoVariable%}
+    <h1 class="mb-4">
+        Fromulario Clientes
+    </h1>
+
+    <form action="" method="POST">
+        {% csrf_token %}
+        <table>
+            {{ clientsForm.as_table }}
+        </table>
+        <input type = "submit" value="Guardar">
+    </form>
+   
+
+{% endblock contenidoVariable%}

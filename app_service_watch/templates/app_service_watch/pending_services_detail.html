@@ -1,0 +1,19 @@
+{% extends "app_service_watch/base.html" %}
+{% load static %}
+{% block contenidoVariable%}
+<h1 class="mb-4">
+    Lista de Servicios en Curso
+</h1>
+<ul>
+    <li>
+        <p>Id: {{object.id}}</p>
+        <p>Descripción: {{object.name}}</p>
+        <p>Fecha de actualización de estado: {{object.status_update_date}}</p>
+        <p>Estado: {{object.status}}</p>
+    </li>
+    <li>
+        <a class="nav-link" href="{% url 'Lista de Servicios en Curso' %}">Lista de Servicios en Curso</a>
+    </li>
+</ul>
+
+{% endblock contenidoVariable%}

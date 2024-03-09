@@ -1,0 +1,22 @@
+{% extends "app_service_watch/base.html" %}
+{% load static %}
+{% block contenidoVariable%}
+<h1 class="mb-4">
+    Lista de Servicios en curso
+</h1>
+<ul>
+    {% for ps in object_list %}
+    <li>
+        Id: {{ps.id}}, Descripción: {{ps.name}}, Fecha de actualización: {{ps.status_update_date}}, Estado: {{ps.status}}.
+    </li>
+    
+    <li>
+        <a href="{% url 'Detalle de Servicios en Curso' ps.id %}">Detalle del Servicio Prestado</a>
+        <a href="{% url 'Crear Servicios en Curso' %}">Agregar Servicio Prestado</a>
+        <a href="{% url 'Actualizar Servicios en Curso' ps.id %}">Actualizar Servicio Prestado</a>
+        <a href="{% url 'Borrar Servicios en Curso' ps.id %}">Borrar Servicio Prestado</a>
+    </li>
+    {% endfor %}
+</ul>
+
+{% endblock contenidoVariable%}

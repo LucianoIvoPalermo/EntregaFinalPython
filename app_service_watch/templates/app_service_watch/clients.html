@@ -1,0 +1,18 @@
+{% extends "app_service_watch/base.html" %}
+{% load static %}
+{% block contenidoVariable%}
+<h1 class="mb-4">
+    Clientes
+</h1>
+<ul>
+    {% for clients in get_clients %}
+    <li>
+        Id: {{clients.id}}, Nombre: {{clients.name}}, Apellido: {{clients.last_name}}, Email: {{clients.email}}, Empresa: {{clients.company}}.
+    </li>
+    {% endfor %}
+    <li>
+        <a class="nav-link" href="{% url 'ClientsForm' %}">Agregar Cliente</a>
+    </li>
+</ul>
+
+{% endblock contenidoVariable%}

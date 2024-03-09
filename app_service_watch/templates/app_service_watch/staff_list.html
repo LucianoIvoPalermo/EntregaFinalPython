@@ -1,0 +1,22 @@
+{% extends "app_service_watch/base.html" %}
+{% load static %}
+{% block contenidoVariable%}
+<h1 class="mb-4">
+    Lista de Clientes
+</h1>
+<ul>
+    {% for staff in object_list %}
+    <li>
+        Id: {{staff.id}}, Nombre: {{staff.name}}, Apellido: {{staff.last_name}}, Email: {{staff.email}}.
+    </li>
+    
+    <li>
+        <a href="{% url 'Detalle de Staff' staff.id%}">Detalle del Staff</a>
+        <a href="{% url 'Crear Staff' %}">Agregar Staff</a>
+        <a href="{% url 'Actualizar Staff' staff.id %}">Actualizar Staff</a>
+        <a href="{% url 'Borrar Staff' staff.id %}">Borrar Staff</a>
+    </li>
+    {% endfor %}
+</ul>
+
+{% endblock contenidoVariable%}

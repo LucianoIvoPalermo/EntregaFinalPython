@@ -1,0 +1,19 @@
+{% extends "app_service_watch/base.html" %}
+{% load static %}
+{% block contenidoVariable%}
+<h1 class="mb-4">
+    Lista de Servicios Prestados
+</h1>
+<ul>
+    <li>
+        <p>Id: {{object.id}}</p>
+        <p>Descripción: {{object.name}}</p>
+        <p>Fecha de finalización: {{object.completion_date|date:"d/m/Y"}}</p>
+        <p>Entregado al cliente: {{object.completed}}</p>
+    </li>
+    <li>
+        <a class="nav-link" href="{% url 'Lista de Servicios Prestados' %}">Lista de Servicios Prestados</a>
+    </li>
+</ul>
+
+{% endblock contenidoVariable%}

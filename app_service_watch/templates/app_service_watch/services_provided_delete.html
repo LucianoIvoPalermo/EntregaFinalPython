@@ -1,0 +1,19 @@
+{% extends "app_service_watch/base.html" %}
+{% load static %}
+{% block contenidoVariable%}
+<h1 class="mb-4">
+    Borrar Servicio Prestado
+</h1>
+<div class="container mt-5">
+    <ul> 
+        <p>¿Estás seguro de que quieres eliminar "{{ object }}"?</p>
+        <form method="post">
+            {% csrf_token %}
+            <input type="submit" value="Confirmar" class="btn btn-danger">
+        </form>
+        <li>
+            <a class="nav-link" href="{% url 'Lista de Servicios Prestados' %}">Lista de Servicios Prestados</a>
+        </li>
+    </ul>
+<div>
+{% endblock contenidoVariable%}

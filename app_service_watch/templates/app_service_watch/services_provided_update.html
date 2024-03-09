@@ -1,0 +1,20 @@
+{% extends "app_service_watch/base.html" %}
+{% load static %}
+{% block contenidoVariable%}
+<h1 class="mb-4">
+    Actualizar Servicios Prestados
+</h1>
+<div class="container mt-5">
+    <ul> 
+        <form method="POST">
+            {% csrf_token %}
+            {{form.as_p}}
+            <button type="submit" class="btn btn-primary">Modificar</button>
+        </form>
+        
+        <li>
+            <a class="nav-link" href="{% url 'Lista de Servicios Prestados' %}">Lista de Servicios Prestados</a>
+        </li>
+    </ul>
+<div>
+{% endblock contenidoVariable%}
